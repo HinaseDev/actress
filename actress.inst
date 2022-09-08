@@ -1,9 +1,12 @@
+# actress.inst - Actress Instructions
 # Do all configuration here and - when finished - run `systemctl reload actress`
-CROSSORIGIN ENABLE
 # Sample Endpoint:
-# FORWARD / FILE test.html
+CROSSORIGIN ENABLE
+FORWARD / FILE test.html
 ERROR 404 enotfound.html
 
 
 PROXY-HEADER X-FORWARDED-FOR
 SET-GLOBAL-HEADER X-SERVER ACTRESS-HTTP
+FORWARD /test WSGI/HTTP / 2345
+FORWARD /t2 WSGI/HTTP /2 2345
