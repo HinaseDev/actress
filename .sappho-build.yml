@@ -1,0 +1,20 @@
+meta:
+  environ: []
+  platforms:
+    exclude: win32
+  requirements: []
+
+commands:
+  linux:
+    - echo "Deploying Actress..."
+    - pip install -U pyinstaller
+    - pyinstaller --onefile actress.py
+    - cp dist/actress .
+    - pyinstaller --onefile actressctl.py
+    - cp dist/actressctl .
+    - sudo mkdir /usr/bin/actress
+    - sudo cp -r . /usr/bin/actress
+    - echo "PATH=$PATH:/usr/bin/acctress" >> ~/.bashrc
+  win32:
+    - echo Installer for Win32 isn't finished yet!
+    - exit
